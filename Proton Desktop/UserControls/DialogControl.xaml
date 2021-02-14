@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Proton_Desktop.UserControls.DialogControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Proton_Desktop.UserControls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" >
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Grid.Column="0">
+            <Ellipse x:Name="photo"
+                Width="45"
+                Height="45"
+                Fill="#FFF">
+
+            </Ellipse>
+        </Grid>
+
+        <Grid Grid.Column="1"
+              Width="200"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="username" Text="Username" Foreground="White" 
+                       FontFamily="/Proton Desktop;component/Fonts/#Open Sans" Grid.RowSpan="1"></TextBlock>
+            <TextBlock x:Name="message" Text="Message" Foreground="#FFC9C9C9" 
+                       FontFamily="/Proton Desktop;component/Fonts/#Open Sans" Grid.Row="1"/>
+        </Grid>
+    </Grid>
+</UserControl>
