@@ -1,0 +1,33 @@
+﻿<Page x:Class="Proton.Pages.DialogPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proton.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DialogPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="23*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="White">
+            <TextBlock x:Name="Username" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/Proton;component/Assets/Fonts/#Open Sans SemiBold" FontSize="14">Username</TextBlock>
+        </Grid>
+        <Grid Background="White" Height="60" Grid.Row="1" VerticalAlignment="Bottom">
+            <TextBox x:Name="MessageText" Margin="50,0,120,10" materialDesign:HintAssist.Hint="Write something..." 
+                     Text="{Binding Path=MessageText}"
+                     VerticalContentAlignment="Bottom" FontFamily="/Proton;component/Assets/Fonts/#Open Sans" Height="40" VerticalAlignment="Bottom"/>
+            <Button Margin="0,15,10,0" VerticalAlignment="Top" Height="35" 
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Command="{Binding Path=SendCommand}"
+                    CommandParameter="{Binding ElementName=Username}"
+                    HorizontalAlignment="Right" Width="105" IsDefault="True">
+                <materialDesign:PackIcon Kind="Send"></materialDesign:PackIcon>
+            </Button>
+        </Grid>
+        <ListBox x:Name="MessagesList" ItemsSource="{Binding Path=MessageItemControls}" Margin="0,0,0,60" Grid.Row="1"/>
+    </Grid>
+</Page>

@@ -1,2 +1,0 @@
-# proton-desktop
-Messenger

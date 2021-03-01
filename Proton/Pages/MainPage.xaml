@@ -1,0 +1,47 @@
+﻿<Page x:Class="Proton.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proton.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:ie="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="23*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="29*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.RowSpan="1" Background="White">
+            <TextBox x:Name="searchControl"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" BorderBrush="WhiteSmoke" Background="WhiteSmoke"
+                         materialDesign:HintAssist.Hint="Search" Padding="16,7,12,0" FontFamily="/Proton;component/Assets/Fonts/#Open Sans"
+                         materialDesign:HintAssist.IsFloating="False" Margin="40,2,10,2" Height="32"/>
+            <Button Content="Button" HorizontalAlignment="Right" Margin="0,2,0,0" VerticalAlignment="Top" Width="0" Command="{Binding Path=SearchCommand}" CommandParameter="{Binding ElementName=searchControl}" IsDefault="True"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="White">
+            <ListBox ItemsSource="{Binding Path=Items}" SelectedItem="{Binding Path=SelectedItem}">
+                <ie:Interaction.Triggers>
+                    <ie:EventTrigger EventName="SelectionChanged">
+                        <ie:InvokeCommandAction x:Name="myListBox" Command="{Binding SelectedItemChangedCommand}"  CommandParameter="{Binding ElementName=myListBox, Path=SelectedItem}"/>
+                    </ie:EventTrigger>
+                </ie:Interaction.Triggers>
+            </ListBox>
+        </Grid>
+
+        <Grid Background="WhiteSmoke" Grid.Column="1" Grid.RowSpan="2">
+            <Frame Content="{Binding Path=CurrentDialog}"></Frame>
+        </Grid>
+        <Frame x:Name="FrontFrame" Grid.RowSpan="2" Grid.ColumnSpan="2"></Frame>
+        <Button x:Name="settingsButton" Grid.Row="0" Grid.RowSpan="1" Style="{StaticResource MaterialDesignFlatButton}" Padding="0" Height="32" HorizontalAlignment="Left" Width="32" Margin="3,3,0,2">
+            <materialDesign:PackIcon Kind="Settings"></materialDesign:PackIcon>
+        </Button>
+    </Grid>
+</Page>
